@@ -133,9 +133,3 @@ Após rodar o servidor, acesse:
 
 * **Swagger UI:** `http://localhost:8000/api/schema/swagger-ui/`
 * **ReDoc:** `http://localhost:8000/api/schema/redoc/`
-
----
-
-## Licença
-
-Este projeto é desenvolvido para fins acadêmicos sob a licença [MIT](LICENSE).
