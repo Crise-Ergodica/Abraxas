@@ -3,6 +3,7 @@ name = "barao-das-bebidas"
 version = "0.1.0"
 description = "Projeto Integrador de Engenharia de Software"
 authors = ["Aurora Drumond <aurora.magalhaes@a.unileste.edu.br>"]
+package-mode = false  # <--- Aqui está o que você pediu
 
 [tool.poetry.dependencies]
 python = "^3.11"
@@ -11,7 +12,7 @@ djangorestframework = "^3.14"
 django-cors-headers = "^4.3"
 psycopg2-binary = "^2.9"
 python-decouple = "^3.8"
-drf-spectacular = "^0.27.0" # Para documentação Swagger automática
+drf-spectacular = "^0.27.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.0"
@@ -21,3 +22,28 @@ black = "^24.0"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+# --- CONFIGURAÇÕES EXTRAS INTERESSANTES ---
+
+# 1. Configuração do Black (Formatador de código)
+# Garante que todo mundo do grupo formate o código igual, evitando brigas.
+[tool.black]
+line-length = 88  # Padrão do mercado
+target-version = ['py311']
+extend-exclude = '''
+/(
+  # Exclui pastas que não devem ser tocadas
+  | migrations
+  | .venv
+  | .git
+)/
+'''
+
+# 2. Configuração do Pytest
+# Ensina o Pytest onde está o settings.py.
+# Sem isso, seus colegas teriam que configurar variável de ambiente toda vez.
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "src.config.settings"
+python_files = ["test_*.py", "*_test.py", "tests.py"]
+testpaths = ["tests"]
+addopts = "--reuse-db"  # Acelera os testes reutilizando o banco de teste criado
