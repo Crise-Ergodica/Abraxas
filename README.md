@@ -1,4 +1,7 @@
-# Barão das Bebidas - Engenharia de Software
+<div align="center">
+  <img src="docs/img/logo-readme.svg" alt="Barão das Bebidas Logo" width="100%">
+</div>
+<br>
 
 ![Status](https://img.shields.io/badge/Status-Em_Desenvolvimento-yellow)
 ![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)
