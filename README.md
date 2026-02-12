@@ -30,7 +30,7 @@ A divisão do grupo segue uma arquitetura **Backend (API Provider)** e **Fronten
 
 | Integrante | Função Principal | Responsabilidades Chave | Stack Focada |
 | :--- | :--- | :--- | :--- |
-| **...** | Infra e DBA | Configuração do Docker, CI/CD, Modelagem do Banco (SQL), Migrations. | Docker, PostgreSQL, SQL |
+| **Gustavo** | Infra e DBA | Configuração do Docker, CI/CD, Modelagem do Banco (SQL), Migrations. | Docker, PostgreSQL, SQL |
 | **Aurora** | QA e Docs | Testes Automatizados, Swagger/Redoc, Documentação Acadêmica (LaTeX/ABNT). | Pytest, Swagger, Markdown |
 | **Aurora** | Backend Logic | Desenvolvimento das Views, Regras de Negócio e Segurança. | Django REST Framework (DRF) |
 | **Aurora** | API Integration | Serializers, Endpoints, Autenticação (JWT/Session). | Python, DRF, JSON |
