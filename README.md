@@ -10,11 +10,11 @@
 ![JavaScript](https://img.shields.io/badge/Frontend-Vanilla_JS-F7DF1E?logo=javascript&logoColor=black)
 ![Poetry](https://img.shields.io/badge/Gerenciador-Poetry-60A5FA?logo=poetry&logoColor=white)
 
-> **Descrição:** Breve resumo do propósito do TCC/Projeto de Extensão. Qual problema ele resolve? Quem é o público-alvo? (Ex: Sistema de gestão acadêmica focado em acessibilidade...).
+> **Descrição:** Localizada na Praça Guilhermino de Oliveira, N 224 Santa Margarida MG, e tendo seu horário de funcionamento de Segunda a Sábado das 8:00 às 21:00 horas, oferece atendimento e entrega de uma ampla variedade de bebidas de alta qualidade, que abrange desde refrigerantes e sucos, até uma seleção de vinhos, cervejas artesanais, destilados e coquetéis prontos para desfrutar. O atendimento On-line funciona a partir do momento em que o cliente entra em contato pelos canais digitais da loja (Instagram ou WhatsApp) ou por chamada telefônica, e rapidamente a atendente irá separar seu pedido, caso não tenha algum item ela vai sugerir algo semelhante, pegar o endereço de entrega e em caso de pagamento por meio de Pix já receber o pagamento. Assim que o pedido for fechado o motoboy irá levar até a casa do cliente e em caso de pagamentos por meio de dinheiro ou cartão receber o pagamento. Já o atendimento presencial funciona de maneira simples o cliente escolhe entre receber a ajuda da atendente ou ele mesmo pegar o que deseja e se dirigir até o caixa para efetuar o pagamento. 
 
 ---
 
-## 0. Documentacao do Projeto
+## Documentacao do Projeto
 
 Para manter a padronizacao, leia os guias antes de iniciar o desenvolvimento:
 
