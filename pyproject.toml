@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "barao-das-bebidas"
+version = "0.1.0"
+description = "Projeto Integrador de Engenharia de Software"
+authors = ["Aurora Drumond <aurora.magalhaes@a.unileste.edu.br>"]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^5.0"
+djangorestframework = "^3.14"
+django-cors-headers = "^4.3"
+psycopg2-binary = "^2.9"
+python-decouple = "^3.8"
+drf-spectacular = "^0.27.0" # Para documentação Swagger automática
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0"
+pytest-django = "^4.8"
+black = "^24.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -14,6 +14,16 @@
 
 ---
 
+## 0. Documentacao do Projeto
+
+Para manter a padronizacao, leia os guias antes de iniciar o desenvolvimento:
+
+- [Regras de Contribuicao e Git](docs/CONTRIBUTING.md) - Leitura Obrigatoria
+- [Guia do Backend (Django)](docs/BACKEND_GUIDE.md)
+- [Guia do Frontend (JS)](docs/FRONTEND_GUIDE.md)
+
+---
+
 ## 1. Composição do Time e Responsabilidades
 
 A divisão do grupo segue uma arquitetura **Backend (API Provider)** e **Frontend (API Consumer)**.
@@ -60,38 +70,48 @@ nome-do-projeto/
 
 ### Passo a Passo
 
-1.  **Instale as dependências:**
+1. **Instale as dependências:**
     Isso criará automaticamente a pasta `.venv` na raiz.
+
     ```bash
     poetry install
     ```
 
-2.  **Ative o Ambiente Virtual:**
-    **Windows:**
-        ```bash
-        .venv\Scripts\activate
-        ```
-     **Linux / Mac:**
-        ```bash
-        source .venv/bin/activate
-        ```
+2. **Ative o Ambiente Virtual:**
 
-3.  **Variáveis de Ambiente:**
+    **Windows:**
+
+    ```bash
+    .venv\Scripts\activate
+    ```
+
+     **Linux / Mac:**
+
+    ```bash
+    source .venv/bin/activate
+    ```
+
+3. **Variáveis de Ambiente:**
+
     ```bash
     cp .env.example .env
     ```
 
-4.  **Suba o Banco de Dados (Docker):**
+4. **Suba o Banco de Dados (Docker):**
+
     ```bash
     docker-compose up -d
     ```
 
-5.  **Execute o Projeto:**
+5. **Execute o Projeto:**
+
     Com a venv ativa, use os comandos normais do Django:
+
     ```bash
     python manage.py migrate
     python manage.py runserver
     ```
+
     > O servidor estará rodando em: `http://127.0.0.1:8000/`
 
 ---
@@ -101,28 +121,31 @@ nome-do-projeto/
 Para evitar conflitos, seguimos estritamente este fluxo. **NUNCA faça commit direto na main ou develop.**
 
 ### As Branches
+
 - **main**: Código de produção (estável). Apenas Tech Lead aprova o merge.
 - **develop**: Branch de integração. Todo PR deve apontar para cá.
 - **feature/nome-da-feature**: Branch de trabalho individual.
 
 ### Ciclo de Vida de uma Tarefa
 
-1.  **Crie sua branch:**
+1. **Crie sua branch:**
+
     ```bash
     git checkout develop
     git pull origin develop
     git checkout -b feature/minha-nova-funcionalidade
     ```
 
-2.  **Trabalhe e Commite:**
-* Use [Conventional Commits](https://www.conventionalcommits.org/):
-    - `feat: adiciona model de alunos`
-    - `fix: corrige erro no login`
-    - `docs: atualiza diagrama de classes`
+2. **Trabalhe e Commite:**
 
-3.  **Abra um Pull Request (PR):**
-    - No GitHub, solicite o merge da sua `feature` para a `develop`.
-    - Solicite revisão de pelo menos 1 colega.
+    - Use [Conventional Commits](https://www.conventionalcommits.org/):
+        - `feat: adiciona model de alunos`
+        - `fix: corrige erro no login`
+        - `docs: atualiza diagrama de classes`
+
+    - **Abra um Pull Request (PR):**
+        - No GitHub, solicite o merge da sua `feature` para a `develop`.
+        - Solicite revisão de pelo menos 1 colega.
 
 ---
 
@@ -131,5 +154,5 @@ Para evitar conflitos, seguimos estritamente este fluxo. **NUNCA faça commit di
 A documentação dos endpoints é gerada automaticamente pelo Swagger.
 Após rodar o servidor, acesse:
 
-* **Swagger UI:** `http://localhost:8000/api/schema/swagger-ui/`
-* **ReDoc:** `http://localhost:8000/api/schema/redoc/`
+- **Swagger UI:** `http://localhost:8000/api/schema/swagger-ui/`
+- **ReDoc:** `http://localhost:8000/api/schema/redoc/`
