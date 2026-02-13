@@ -41,13 +41,17 @@ Nao invente moda. Siga estritamente este fluxo para evitar conflitos de merge.
 
 ### Nomenclatura de Branches
 
-Sempre crie branches a partir da `develop`. Use o padrao:
+Quando criar uma funcionabilidade, sempre crie branches a partir da `develop`. 
+
+Use o padrao:
 `tipo/nome-da-tarefa`
 
 * `feat/login-usuario` (Nova funcionalidade)
 * `fix/botao-quebrado` (Correcao de erro)
 * `docs/atualiza-readme` (Documentacao)
 * `refactor/limpeza-css` (Melhoria de codigo sem mudar funcionalidade)
+
+Se todo o grupo focar em fazer **tarefas pequenas**, em **branches pequenas**, mandando para a `develop` o mais rápido possível, o projeto fluirá de forma extremamente profissional.
 
 ---
 
