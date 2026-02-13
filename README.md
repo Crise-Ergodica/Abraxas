@@ -18,9 +18,11 @@
 
 Para manter a padronizacao, leia os guias antes de iniciar o desenvolvimento:
 
-- [Regras de Contribuicao e Git](docs/CONTRIBUTING.md) - Leitura Obrigatoria
-- [Guia do Backend (Django)](docs/BACKEND_GUIDE.md)
-- [Guia do Frontend (JS)](docs/FRONTEND_GUIDE.md)
+- [Contribuição e Git](docs/CONTRIBUTING.md)
+- [Backend (Django)](docs/BACKEND_GUIDE.md)
+- [Frontend (JS)](docs/FRONTEND_GUIDE.md)
+
+*Conforme o desenvolvimento avança, independente de sermos responsaveis ou não pela documentação final, é dever de cada integrante gerar documentos e comits organizados para o entendimento de todos do código em sua frente*
 
 ---
 
@@ -30,11 +32,11 @@ A divisão do grupo segue uma arquitetura **Backend (API Provider)** e **Fronten
 
 | Integrante | Função Principal | Responsabilidades Chave | Stack Focada |
 | :--- | :--- | :--- | :--- |
-| **Gustavo** | Infra e DBA | Configuração do Docker, CI/CD, Modelagem do Banco (SQL), Migrations. | Docker, PostgreSQL, SQL |
-| **Aurora** | QA e Docs | Testes Automatizados, Swagger/Redoc, Documentação Acadêmica (LaTeX/ABNT). | Pytest, Swagger, Markdown |
+| **Gustavo**, **Gabriel**, **Rafael** | Infra e DBA | Configuração do Docker, CI/CD, Modelagem do Banco (SQL), Migrations. | Docker, PostgreSQL, SQL |
+| **Aurora**, **Kayke** | QA e Docs | Testes Automatizados, Swagger/Redoc, Documentação Acadêmica (LaTeX/ABNT). | Pytest, Swagger, Markdown |
 | **Aurora** | Backend Logic | Desenvolvimento das Views, Regras de Negócio e Segurança. | Django REST Framework (DRF) |
 | **Aurora** | API Integration | Serializers, Endpoints, Autenticação (JWT/Session). | Python, DRF, JSON |
-| **Ana Clara** | UI/UX Designer | Estrutura HTML Semântica, CSS (Tailwind/Bootstrap), Acessibilidade. | HTML5, CSS3, Figma |
+| **Ana Clara**, **Gabriel** | UI/UX Designer | Estrutura HTML Semântica, CSS (Tailwind/Bootstrap), Acessibilidade. | HTML5, CSS3, Figma |
 | **Ana Clara** | Frontend Dev | Consumo de API (Fetch/Axios), Manipulação de DOM, Lógica JS. | JavaScript (ES6+), AJAX |
 
 ---
