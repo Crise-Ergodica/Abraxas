@@ -1,0 +1,361 @@
+[
+  {
+    "id": "characteristic_roll",
+    "name": "Characteristic Roll (Stat x 5)",
+    "name_pt": "Teste de Atributo",
+    "category": "core_system",
+    "is_optional": false,
+    "mechanic_type": "roll_modifier",
+    "logic": {
+      "trigger": "skill_check_fallback",
+      "input_variables": [
+        "characteristic"
+      ],
+      "formula": "characteristic * 5"
+    },
+    "data_table": null,
+    "description": "Teste padrão quando não há perícia específica. Multiplica-se o atributo por 5 para obter a chance percentual."
+  },
+  {
+    "id": "resistance_roll",
+    "name": "Resistance Roll",
+    "name_pt": "Teste de Resistência",
+    "category": "core_system",
+    "is_optional": false,
+    "mechanic_type": "formula",
+    "logic": {
+      "trigger": "opposed_check",
+      "input_variables": [
+        "active_characteristic",
+        "passive_characteristic"
+      ],
+      "formula": "50 + (active_characteristic - passive_characteristic) * 5"
+    },
+    "data_table": null,
+    "description": "Resolve disputas entre dois atributos (ex: Força vs Tamanho, Potência vs Potência). Sucesso se 1d100 <= chance."
+  },
+  {
+    "id": "combat_actions",
+    "name": "Combat Actions List",
+    "name_pt": "Lista de Ações de Combate",
+    "category": "combat",
+    "is_optional": false,
+    "mechanic_type": "list_definition",
+    "logic": null,
+    "data_table": {
+      "attack": "Realizar um ataque corpo a corpo ou à distância (Custa 1 ação).",
+      "parry": "Bloquear ataque usando arma ou escudo. Reduz dano ou anula ataque.",
+      "dodge": "Esquivar do ataque. Se bem sucedido, anula o dano (usa perícia Dodge).",
+      "aim": "Gastar rodada mirando (+ chance de acerto no próximo turno).",
+      "disengage": "Recuar do combate sem sofrer ataques de oportunidade.",
+      "cast_spell": "Conjurar magia (tempo de conjuração depende da DEX)."
+    },
+    "description": "Ações disponíveis para um personagem durante seu turno de combate (DEX Rank)."
+  },
+  {
+    "id": "hit_location_hp_ratios",
+    "name": "Hit Location HP Calculation",
+    "name_pt": "Cálculo de HP por Localização",
+    "category": "combat",
+    "is_optional": true,
+    "mechanic_type": "derived_stat",
+    "logic": {
+      "trigger": "on_character_creation",
+      "input_variables": [
+        "hp_total"
+      ],
+      "formula": "math.ceil(hp_total * ratio)"
+    },
+    "data_table": {
+      "legs": 0.33,
+      "abdomen": 0.33,
+      "chest": 0.40,
+      "arms": 0.25,
+      "head": 0.33
+    },
+    "description": "Define quanto HP cada parte do corpo possui baseada no HP total do personagem."
+  },
+  {
+    "id": "major_wound_threshold",
+    "name": "Major Wound Threshold",
+    "name_pt": "Limiar de Ferimento Grave",
+    "category": "combat",
+    "is_optional": false,
+    "mechanic_type": "derived_stat",
+    "logic": {
+      "trigger": "on_damage",
+      "input_variables": [
+        "hp_total"
+      ],
+      "formula": "math.ceil(hp_total / 2)"
+    },
+    "data_table": null,
+    "description": "Se um único ataque causar dano igual ou superior a metade do HP total, causa um Ferimento Grave."
+  },
+  {
+    "id": "armor_damage_reduction",
+    "name": "Armor Protection",
+    "name_pt": "Proteção de Armadura",
+    "category": "combat",
+    "is_optional": false,
+    "mechanic_type": "formula",
+    "logic": {
+      "trigger": "on_damage_taken",
+      "input_variables": [
+        "damage_rolled",
+        "armor_value"
+      ],
+      "formula": "max(0, damage_rolled - armor_value)"
+    },
+    "data_table": null,
+    "description": "A armadura subtrai seu valor diretamente do dano recebido."
+  },
+  {
+    "id": "campaign_power_levels",
+    "name": "Campaign Power Levels",
+    "name_pt": "Níveis de Poder da Campanha",
+    "category": "character_creation",
+    "is_optional": false,
+    "mechanic_type": "table_lookup",
+    "logic": {
+      "trigger": "character_creation_start",
+      "input_variables": [
+        "selected_level"
+      ],
+      "formula": null
+    },
+    "data_table": {
+      "Normal": {
+        "characteristic_points": 24,
+        "skill_points": 250,
+        "skill_cap": 75
+      },
+      "Heroic": {
+        "characteristic_points": 36,
+        "skill_points": 325,
+        "skill_cap": 90
+      },
+      "Epic": {
+        "characteristic_points": 48,
+        "skill_points": 400,
+        "skill_cap": 101
+      },
+      "Superhuman": {
+        "characteristic_points": 60,
+        "skill_points": 500,
+        "skill_cap": 999
+      }
+    },
+    "description": "Define a quantidade de pontos iniciais para atributos e perícias."
+  },
+  {
+    "id": "skill_difficulty_modifiers",
+    "name": "Skill Difficulty",
+    "name_pt": "Dificuldade de Testes",
+    "category": "core_system",
+    "is_optional": false,
+    "mechanic_type": "roll_modifier",
+    "logic": {
+      "trigger": "skill_check",
+      "input_variables": ["skill_rating", "difficulty_level"],
+      "formula": "skill_rating * data_table.get(difficulty_level, 1)"
+    },
+    "data_table": {
+      "easy": 2.0,
+      "average": 1.0,
+      "difficult": 0.5,
+      "impossible": 0.0
+    },
+    "description": "Multiplicadores aplicados à chance de sucesso baseados na dificuldade da tarefa."
+  },
+  {
+    "id": "fumble_range",
+    "name": "Fumble Range",
+    "name_pt": "Faixa de Fumble",
+    "category": "core_system",
+    "is_optional": false,
+    "mechanic_type": "formula",
+    "logic": {
+      "trigger": "check_roll_result",
+      "input_variables": [
+        "skill_rating"
+      ],
+      "formula": "max(96, 100 - round( (100 - skill_rating) * 0.05 ))"
+    },
+    "data_table": null,
+    "description": "Calcula a faixa de falha crítica. Geralmente 96-100, mas ajustável para perícias muito altas."
+  },
+  {
+    "id": "critical_range",
+    "name": "Critical Success Range",
+    "name_pt": "Faixa de Crítico",
+    "category": "core_system",
+    "is_optional": false,
+    "mechanic_type": "formula",
+    "logic": {
+      "trigger": "check_roll_result",
+      "input_variables": [
+        "skill_rating"
+      ],
+      "formula": "max(1, round(skill_rating / 20))"
+    },
+    "data_table": null,
+    "description": "Calcula a faixa de sucesso crítico (1/20 da perícia)."
+  },
+  {
+    "id": "special_range",
+    "name": "Special Success Range",
+    "name_pt": "Faixa de Sucesso Especial",
+    "category": "core_system",
+    "is_optional": false,
+    "mechanic_type": "formula",
+    "logic": {
+      "trigger": "check_roll_result",
+      "input_variables": [
+        "skill_rating"
+      ],
+      "formula": "max(1, round(skill_rating / 5))"
+    },
+    "data_table": null,
+    "description": "Calcula a faixa de sucesso especial (1/5 da perícia)."
+  },
+  {
+    "id": "falling_damage",
+    "name": "Falling",
+    "name_pt": "Queda",
+    "category": "spot_rules_environment",
+    "is_optional": false,
+    "mechanic_type": "formula",
+    "logic": {
+      "trigger": "on_impact",
+      "input_variables": [
+        "meters"
+      ],
+      "formula": "math.floor(meters / 3) * roll('1d6')"
+    },
+    "data_table": null,
+    "description": "Quedas causam 1d6 de dano cumulativo para cada 3 metros completos."
+  },
+  {
+    "id": "fire_and_heat",
+    "name": "Fire and Heat",
+    "name_pt": "Fogo e Calor",
+    "category": "spot_rules_environment",
+    "is_optional": false,
+    "mechanic_type": "table_lookup",
+    "logic": {
+      "trigger": "round_end",
+      "input_variables": ["source"],
+      "formula": "roll(data_table.get(source, '0'))"
+    },
+    "data_table": {
+      "candle": "1d4",
+      "torch": "1d6",
+      "campfire": "1d6+2",
+      "room_flames": "2d6",
+      "lava": "3d6"
+    },
+    "description": "Dano por rodada baseado na fonte de calor."
+  },
+  {
+    "id": "drowning_asphyxiation",
+    "name": "Drowning/Asphyxiation",
+    "name_pt": "Afogamento/Asfixia",
+    "category": "spot_rules_environment",
+    "is_optional": false,
+    "mechanic_type": "formula",
+    "logic": {
+      "trigger": "round_start",
+      "input_variables": [
+        "constitution",
+        "rounds_without_air"
+      ],
+      "formula": "roll('1d6') if rounds_without_air > constitution else 0"
+    },
+    "data_table": null,
+    "description": "Em situações onde a respiração é restrita, o personagem deve fazer um teste de Stamina. Caso falhe, perde SAN e sofre dano."
+  },
+  {
+    "id": "hp_total",
+    "name": "Base Hit Points",
+    "name_pt": "Pontos de Vida Base",
+    "category": "character_creation",
+    "is_optional": false,
+    "mechanic_type": "derived_stat",
+    "logic": {
+      "trigger": "on_stat_change",
+      "input_variables": [
+        "constitution",
+        "size"
+      ],
+      "formula": "math.ceil((constitution + size) / 2)"
+    },
+    "data_table": null,
+    "description": "A média de CON e SIZ determina o total de Pontos de Vida do personagem."
+  },
+  {
+    "id": "damage_bonus_calculation",
+    "name": "Damage Bonus",
+    "name_pt": "Bônus de Dano",
+    "category": "combat",
+    "is_optional": false,
+    "mechanic_type": "derived_stat",
+    "logic": {
+      "trigger": "on_stat_change",
+      "input_variables": [
+        "strength",
+        "size"
+      ],
+      "formula": "'-1d6' if (strength+size) <= 12 else ('-1d4' if (strength+size) <= 16 else ('0' if (strength+size) <= 24 else ('+1d4' if (strength+size) <= 32 else ('+1d6' if (strength+size) <= 40 else f'+{1 + math.ceil(((strength+size) - 40) / 16)}d6'))))"
+    },
+    "data_table": null,
+    "description": "Calcula o bônus de dano, usando 'strength' para evitar conflito com palavras reservadas do Python."
+  },
+  {
+    "id": "initiative_rating",
+    "name": "DEX Rank (Initiativa)",
+    "name_pt": "Rank de Destreza (Iniciativa)",
+    "category": "combat",
+    "is_optional": false,
+    "mechanic_type": "derived_stat",
+    "logic": {
+      "trigger": "combat_start",
+      "input_variables": [
+        "dexterity"
+      ],
+      "formula": "dexterity"
+    },
+    "data_table": null,
+    "description": "Em BRP, a iniciativa é determinada diretamente pelo valor de Destreza. Maior age primeiro."
+  },
+  {
+    "id": "movement_rate",
+    "name": "Movement Rate",
+    "name_pt": "Taxa de Movimento",
+    "category": "core_system",
+    "is_optional": false,
+    "mechanic_type": "derived_stat",
+    "logic": {
+      "trigger": "on_stat_change",
+      "input_variables": ["dexterity", "size"],
+      "formula": "12 if dexterity > size else 10"
+    },
+    "data_table": null,
+    "description": "Metros que o personagem pode se mover por rodada. Personagens ágeis (DEX > SIZ) movem-se mais rápido."
+  },
+  {
+    "id": "action_points",
+    "name": "Combat Actions per Round",
+    "name_pt": "Ações por Rodada",
+    "category": "combat",
+    "is_optional": false,
+    "mechanic_type": "derived_stat",
+    "logic": {
+      "trigger": "round_start",
+      "input_variables": ["intelligence", "dexterity"],
+      "formula": "2 if (intelligence + dexterity) >= 32 else 1"
+    },
+    "data_table": null,
+    "description": "Quantidade de ações principais (Ataque, Magia, etc) disponíveis no turno. Baseado na soma de INT e DEX."
+  }
+]

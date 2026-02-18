@@ -1,0 +1,79 @@
+[
+  {
+    "id": "armor_soft_leather",
+    "name": "Soft Leather",
+    "name_pt": "Couro Macio",
+    "armor_value": 1,
+    "burden": "light",
+    "skill_modifier": 0,
+    "locations": ["chest", "abdomen", "arms", "legs"],
+    "cost": 2,
+    "description": "Jaqueta ou veste de couro flexível que oferece proteção mínima."
+  },
+  {
+    "id": "armor_chain_mail",
+    "name": "Chain",
+    "name_pt": "Cota de Malha",
+    "armor_value": 7,
+    "burden": "moderate",
+    "skill_modifier": -20,
+    "locations": ["head", "chest", "abdomen", "arms", "legs"],
+    "cost": 4,
+    "description": "Malha de anéis metálicos entrelaçados, flexível mas pesada."
+  },
+  {
+    "id": "armor_plate_full",
+    "name": "Full Plate",
+    "name_pt": "Placa Completa",
+    "armor_value": 8,
+    "burden": "cumbersome",
+    "skill_modifier": -25,
+    "locations": ["chest", "abdomen", "arms", "legs"],
+    "cost": 4,
+    "description": "Armadura de placas de metal sólidas moldadas ao corpo."
+  },
+  {
+    "id": "armor_bulletproof_vest_modern",
+    "name": "Modern Bulletproof Vest",
+    "name_pt": "Colete à Prova de Balas Moderno",
+    "armor_value": 4,
+    "burden": "light",
+    "skill_modifier": -5,
+    "locations": ["chest"],
+    "cost": 4,
+    "description": "Colete de fibras de aramida de alta tecnologia. Valor 8 contra armas de fogo."
+  },
+  {
+    "id": "armor_riot_gear",
+    "name": "Riot Gear",
+    "name_pt": "Equipamento de Choque",
+    "armor_value": 12,
+    "burden": "moderate",
+    "skill_modifier": -10,
+    "locations": ["head", "chest", "abdomen", "arms", "legs"],
+    "cost": 4,
+    "description": "Equipamento pesado de policia de choque. Valor 6 contra armas de fogo."
+  },
+  {
+    "id": "armor_assault_armor_standard",
+    "name": "Assault Armor, Standard",
+    "name_pt": "Armadura de Assalto Padrão",
+    "armor_value": 10,
+    "burden": "moderate",
+    "skill_modifier": -25,
+    "locations": ["head", "chest", "abdomen", "arms", "legs"],
+    "cost": 4,
+    "description": "Armadura pesada futurista feita de cerâmicas e ligas plásticas."
+  },
+  {
+    "id": "armor_powered_assault_heavy",
+    "name": "Powered Assault Armor, Heavy",
+    "name_pt": "Armadura de Assalto Energizada Pesada",
+    "armor_value": 16,
+    "burden": "cumbersome",
+    "skill_modifier": -50,
+    "locations": ["head", "chest", "abdomen", "arms", "legs"],
+    "cost": 5,
+    "description": "Armadura motorizada massiva com servos que aumentam a força do usuário."
+  }
+]

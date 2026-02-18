@@ -1,0 +1,782 @@
+[
+    {
+      "id": "skill_appraise",
+      "name": "Appraise",
+      "name_pt": "Avaliar",
+      "category": "mental",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "15"
+      },
+      "data_table": null,
+      "description": "Usada para estimar o valor de um objeto, seja uma antiguidade, joia, arma ou animal."
+    },
+    {
+      "id": "skill_art",
+      "name": "Art (various)",
+      "name_pt": "Arte (várias)",
+      "category": "manipulation",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "5"
+      },
+      "data_table": null,
+      "description": "Capacidade de criar obras de arte como pintura, escultura, composição musical ou escrita literária."
+    },
+    {
+      "id": "skill_artillery",
+      "name": "Artillery (various)",
+      "name_pt": "Artilharia (várias)",
+      "category": "combat",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "1"
+      },
+      "data_table": null,
+      "description": "Habilidade de operar peças de artilharia pesada, como canhões, catapultas ou balistas."
+    },
+    {
+      "id": "skill_bargain",
+      "name": "Bargain",
+      "name_pt": "Pechinchar",
+      "category": "communication",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "5"
+      },
+      "data_table": null,
+      "description": "Usada para negociar preços e chegar a acordos comerciais ou compromissos entre partes."
+    },
+    {
+      "id": "skill_brawl",
+      "name": "Brawl",
+      "name_pt": "Briga",
+      "category": "combat",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "25"
+      },
+      "data_table": null,
+      "description": "Combate desarmado, incluindo socos, chutes, cabeçadas e o uso de armas improvisadas simples."
+    },
+    {
+      "id": "skill_climb",
+      "name": "Climb",
+      "name_pt": "Escalar",
+      "category": "physical",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "40"
+      },
+      "data_table": null,
+      "description": "Habilidade de subir ou descer superfícies verticais como muros, árvores e penhascos."
+    },
+    {
+      "id": "skill_command",
+      "name": "Command",
+      "name_pt": "Comando",
+      "category": "communication",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "5"
+      },
+      "data_table": null,
+      "description": "Usada para inspirar, dirigir e coordenar subordinados em tarefas complexas ou em combate."
+    },
+    {
+      "id": "skill_craft",
+      "name": "Craft (various)",
+      "name_pt": "Ofício (várias)",
+      "category": "manipulation",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "5"
+      },
+      "data_table": null,
+      "description": "Habilidade de construir ou fabricar itens práticos, como ferraria, carpintaria ou culinária."
+    },
+    {
+      "id": "skill_demolition",
+      "name": "Demolition",
+      "name_pt": "Demolição",
+      "category": "manipulation",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "1"
+      },
+      "data_table": null,
+      "description": "Conhecimento sobre armazenamento, transporte e detonação de explosivos."
+    },
+    {
+      "id": "skill_disguise",
+      "name": "Disguise",
+      "name_pt": "Disfarce",
+      "category": "communication",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "1"
+      },
+      "data_table": null,
+      "description": "Capacidade de mudar a aparência física e maneirismos para se passar por outra pessoa."
+    },
+    {
+      "id": "skill_dodge",
+      "name": "Dodge",
+      "name_pt": "Esquiva",
+      "category": "physical",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": ["dexterity"],
+        "formula": "dexterity * 2"
+      },
+      "data_table": null,
+      "description": "Habilidade de evadir ataques físicos e perigos iminentes através de reflexos e agilidade."
+    },
+    {
+      "id": "skill_drive",
+      "name": "Drive (various)",
+      "name_pt": "Dirigir (vários)",
+      "category": "physical",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "20"
+      },
+      "data_table": null,
+      "description": "Habilidade de controlar veículos terrestres, desde carroças a automóveis modernos."
+    },
+    {
+      "id": "skill_energy_weapon",
+      "name": "Energy Weapon (various)",
+      "name_pt": "Arma de Energia (várias)",
+      "category": "combat",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "1"
+      },
+      "data_table": null,
+      "description": "Uso de armas avançadas de energia, como lasers, blasters ou desintegradores."
+    },
+    {
+      "id": "skill_etiquette",
+      "name": "Etiquette (various)",
+      "name_pt": "Etiqueta (várias)",
+      "category": "communication",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "5"
+      },
+      "data_table": null,
+      "description": "Conhecimento das normas sociais e comportamentais de grupos específicos ou estratos sociais."
+    },
+    {
+      "id": "skill_fast_talk",
+      "name": "Fast Talk",
+      "name_pt": "Lábia",
+      "category": "communication",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "5"
+      },
+      "data_table": null,
+      "description": "Capacidade de convencer alguém rapidamente ou ludibriar através de persuasão verbal veloz."
+    },
+    {
+      "id": "skill_fine_manipulation",
+      "name": "Fine Manipulation",
+      "name_pt": "Manipulação Fina",
+      "category": "manipulation",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "5"
+      },
+      "data_table": null,
+      "description": "Habilidade manual precisa, usada para arrombar fechaduras, desarmar armadilhas e realizar consertos delicados."
+    },
+    {
+      "id": "skill_firearm",
+      "name": "Firearm (various)",
+      "name_pt": "Arma de Fogo (várias)",
+      "category": "combat",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "1"
+      },
+      "data_table": null,
+      "description": "Habilidade com armas de fogo, incluindo pistolas, rifles, escopetas e metralhadoras."
+    },
+    {
+      "id": "skill_first_aid",
+      "name": "First Aid",
+      "name_pt": "Primeiros Socorros",
+      "category": "mental",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "30"
+      },
+      "data_table": null,
+      "description": "Capacidade de estancar sangramentos, tratar queimaduras leves e realizar triagem médica imediata."
+    },
+    {
+      "id": "skill_fly",
+      "name": "Fly",
+      "name_pt": "Voar",
+      "category": "physical",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": ["dexterity"],
+        "formula": "dexterity * 4"
+      },
+      "data_table": null,
+      "description": "Habilidade de realizar manobras aéreas para seres alados ou com poderes de voo."
+    },
+    {
+      "id": "skill_gaming",
+      "name": "Gaming",
+      "name_pt": "Jogatina",
+      "category": "mental",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": ["intelligence", "power"],
+        "formula": "intelligence + power"
+      },
+      "data_table": null,
+      "description": "Habilidade em jogos de azar, estratégia ou sorte, incluindo cartas, dados e jogos de tabuleiro."
+    },
+    {
+      "id": "skill_grapple",
+      "name": "Grapple",
+      "name_pt": "Luta Livre",
+      "category": "combat",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "25"
+      },
+      "data_table": null,
+      "description": "Técnicas de imobilização, agarramento e arremessos em combate corpo a corpo."
+    },
+    {
+      "id": "skill_heavy_machine",
+      "name": "Heavy Machine (various)",
+      "name_pt": "Maquinário Pesado (vários)",
+      "category": "manipulation",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "1"
+      },
+      "data_table": null,
+      "description": "Operação de grandes máquinas como tanques, escavadeiras, locomotivas ou guindastes."
+    },
+    {
+      "id": "skill_heavy_weapon",
+      "name": "Heavy Weapon (various)",
+      "name_pt": "Arma Pesada (várias)",
+      "category": "combat",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "1"
+      },
+      "data_table": null,
+      "description": "Habilidade com armas que estão no limite da portabilidade, como bazucas e metralhadoras pesadas."
+    },
+    {
+      "id": "skill_hide",
+      "name": "Hide",
+      "name_pt": "Esconder-se",
+      "category": "physical",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "10"
+      },
+      "data_table": null,
+      "description": "A arte de ocultar-se ou ocultar objetos da visão alheia usando o ambiente."
+    },
+    {
+      "id": "skill_insight",
+      "name": "Insight",
+      "name_pt": "Intuição",
+      "category": "perception",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "5"
+      },
+      "data_table": null,
+      "description": "Capacidade de avaliar o estado emocional e os motivos de outra pessoa através da observação."
+    },
+    {
+      "id": "skill_jump",
+      "name": "Jump",
+      "name_pt": "Saltar",
+      "category": "physical",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "25"
+      },
+      "data_table": null,
+      "description": "Capacidade de saltar obstáculos ou para alcançar alturas e distâncias."
+    },
+    {
+      "id": "skill_knowledge",
+      "name": "Knowledge (various)",
+      "name_pt": "Conhecimento (vários)",
+      "category": "mental",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "5"
+      },
+      "data_table": null,
+      "description": "Estudo acadêmico de um campo específico, como História, Direito, Religião ou Contabilidade."
+    },
+    {
+      "id": "skill_language_own",
+      "name": "Language (Own)",
+      "name_pt": "Idioma (Nativo)",
+      "category": "communication",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": ["intelligence"],
+        "formula": "intelligence * 5"
+      },
+      "data_table": null,
+      "description": "Fluência verbal e compreensão do idioma materno do personagem."
+    },
+    {
+      "id": "skill_listen",
+      "name": "Listen",
+      "name_pt": "Ouvir",
+      "category": "perception",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "25"
+      },
+      "data_table": null,
+      "description": "Capacidade de perceber e identificar sons, sussurros e ruídos ambientais."
+    },
+    {
+      "id": "skill_martial_arts",
+      "name": "Martial Arts",
+      "name_pt": "Artes Marciais",
+      "category": "combat",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "1"
+      },
+      "data_table": null,
+      "description": "Treinamento especializado que amplia a eficácia e o dano de ataques de Briga ou armas específicas."
+    },
+    {
+      "id": "skill_medicine",
+      "name": "Medicine",
+      "name_pt": "Medicina",
+      "category": "mental",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "5"
+      },
+      "data_table": null,
+      "description": "Conhecimento avançado usado para diagnosticar doenças, realizar cirurgias e tratar envenenamentos."
+    },
+    {
+      "id": "skill_melee_weapon",
+      "name": "Melee Weapon (various)",
+      "name_pt": "Arma de Combate (várias)",
+      "category": "combat",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "15"
+      },
+      "data_table": null,
+      "description": "Uso de armas de mão como espadas, machados, clavas e lanças."
+    },
+    {
+      "id": "skill_missile_weapon",
+      "name": "Missile Weapon (various)",
+      "name_pt": "Armas de Projétil (várias)",
+      "category": "combat",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "10"
+      },
+      "data_table": null,
+      "description": "Habilidade com armas de projétil não pólvora, como arcos, bestas e lanças de arremesso."
+    },
+    {
+      "id": "skill_navigate",
+      "name": "Navigate",
+      "name_pt": "Navegação",
+      "category": "perception",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "10"
+      },
+      "data_table": null,
+      "description": "Habilidade de encontrar o caminho para um destino usando mapas, estrelas ou intuição."
+    },
+    {
+      "id": "skill_perform",
+      "name": "Perform (various)",
+      "name_pt": "Atuação (várias)",
+      "category": "communication",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "5"
+      },
+      "data_table": null,
+      "description": "Capacidade de se apresentar artisticamente, seja atuando, dançando ou tocando um instrumento."
+    },
+    {
+      "id": "skill_persuade",
+      "name": "Persuade",
+      "name_pt": "Persuadir",
+      "category": "communication",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "15"
+      },
+      "data_table": null,
+      "description": "Usada para convencer alguém de uma ideia ou crença através de debate, lógica ou oratória."
+    },
+    {
+      "id": "skill_pilot",
+      "name": "Pilot (various)",
+      "name_pt": "Pilotar (vários)",
+      "category": "physical",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "1"
+      },
+      "data_table": null,
+      "description": "Habilidade de operar veículos aéreos, aquáticos ou espaciais."
+    },
+    {
+      "id": "skill_psychotherapy",
+      "name": "Psychotherapy",
+      "name_pt": "Psicoterapia",
+      "category": "mental",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "1"
+      },
+      "data_table": null,
+      "description": "Usada para tratar traumas mentais, insanidade e restaurar pontos de Sanidade."
+    },
+    {
+      "id": "skill_repair",
+      "name": "Repair (various)",
+      "name_pt": "Reparo (vários)",
+      "category": "manipulation",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "15"
+      },
+      "data_table": null,
+      "description": "Capacidade de consertar itens danificados ou realizar modificações técnicas em equipamentos."
+    },
+    {
+      "id": "skill_research",
+      "name": "Research",
+      "name_pt": "Pesquisa",
+      "category": "perception",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "25"
+      },
+      "data_table": null,
+      "description": "Habilidade de localizar informações em bibliotecas, arquivos ou redes de computadores."
+    },
+    {
+      "id": "skill_ride",
+      "name": "Ride (various)",
+      "name_pt": "Cavalgar (vários)",
+      "category": "physical",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "5"
+      },
+      "data_table": null,
+      "description": "Habilidade de montar, controlar e cuidar de animais de carga ou montaria."
+    },
+    {
+      "id": "skill_science",
+      "name": "Science (various)",
+      "name_pt": "Ciência (várias)",
+      "category": "mental",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "1"
+      },
+      "data_table": null,
+      "description": "Conhecimento de princípios científicos em áreas como Biologia, Química ou Física."
+    },
+    {
+      "id": "skill_sense",
+      "name": "Sense",
+      "name_pt": "Sentir",
+      "category": "perception",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "10"
+      },
+      "data_table": null,
+      "description": "Uso de sentidos como tato, paladar e olfato para perceber estímulos não visuais ou sonoros."
+    },
+    {
+      "id": "skill_sleight_of_hand",
+      "name": "Sleight of Hand",
+      "name_pt": "Prestidigitação",
+      "category": "manipulation",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "5"
+      },
+      "data_table": null,
+      "description": "Capacidade de manipular objetos pequenos de forma enganosa ou sem atrair atenção."
+    },
+    {
+      "id": "skill_spot",
+      "name": "Spot",
+      "name_pt": "Encontrar",
+      "category": "perception",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "25"
+      },
+      "data_table": null,
+      "description": "Habilidade visual para notar detalhes importantes, compartimentos secretos ou inimigos ocultos."
+    },
+    {
+      "id": "skill_stealth",
+      "name": "Stealth",
+      "name_pt": "Furtividade",
+      "category": "physical",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "10"
+      },
+      "data_table": null,
+      "description": "Habilidade de mover-se silenciosamente e passar despercebido por guardas ou sentinelas."
+    },
+    {
+      "id": "skill_swim",
+      "name": "Swim",
+      "name_pt": "Nadar",
+      "category": "physical",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "25"
+      },
+      "data_table": null,
+      "description": "Habilidade de se deslocar através da água e manter-se à tona em condições adversas."
+    },
+    {
+      "id": "skill_teach",
+      "name": "Teach",
+      "name_pt": "Ensinar",
+      "category": "communication",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "10"
+      },
+      "data_table": null,
+      "description": "Capacidade de transmitir conhecimentos ou técnicas para outros personagens."
+    },
+    {
+      "id": "skill_technical_skill",
+      "name": "Technical Skill (various)",
+      "name_pt": "Habilidade Técnica (várias)",
+      "category": "mental",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "5"
+      },
+      "data_table": null,
+      "description": "Conhecimento operacional de dispositivos tecnológicos complexos como computadores ou robótica."
+    },
+    {
+      "id": "skill_throw",
+      "name": "Throw",
+      "name_pt": "Arremessar",
+      "category": "physical",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "25"
+      },
+      "data_table": null,
+      "description": "Capacidade de atingir um alvo com um objeto arremessado, como pedras ou granadas."
+    },
+    {
+      "id": "skill_track",
+      "name": "Track",
+      "name_pt": "Rastrear",
+      "category": "perception",
+      "is_optional": false,
+      "mechanic_type": "skill_base_rating",
+      "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": [],
+        "formula": "10"
+      },
+      "data_table": null,
+      "description": "Habilidade de identificar e seguir rastros deixados por pessoas, animais ou veículos."
+    },
+    {
+    "id": "skill_projection",
+    "name": "Projection",
+    "name_pt": "Projeção",
+    "category": "combat",
+    "is_optional": false,
+    "mechanic_type": "skill_base_rating",
+    "logic": {
+        "trigger": "get_base_skill",
+        "input_variables": ["dexterity"],
+        "formula": "dexterity * 2"
+    },
+    "data_table": null,
+    "description": "Habilidade de mirar ataques de energia inata, magias ou superpoderes."
+    }
+  ]
