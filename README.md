@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="docs/img/logo-readme.svg" alt="Barão das Bebidas Logo" width="100%">
+  <img src="docs/img/logo-readme.svg" alt="Abraxas Logo" width="100%">
 </div>
 <br>
 
@@ -46,7 +46,7 @@ A divisão do grupo segue uma arquitetura **Backend (API Provider)** e **Fronten
 O projeto é um **Monorepo Modular**. O Backend serve apenas JSON; o Frontend consome esses dados e renderiza o HTML.
 
 ```text
-nome-do-projeto/
+Abraxas/
 ├── .github/workflows/    # Automação (CI/CD)
 ├── docs/                 # Documentação do TCC (Diagramas, PDFs)
 ├── src/                  # CÓDIGO FONTE
