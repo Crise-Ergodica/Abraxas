@@ -29,7 +29,7 @@
           font-weight="900" 
           textLength="620" 
           lengthAdjust="spacing">
-      BARÃO DAS BEBIDAS
+      ABRAXAS
     </text>
 
     <text class="subtitle" 
@@ -40,7 +40,7 @@
           textLength="620" 
           lengthAdjust="spacingAndGlyphs" 
           text-transform="uppercase">
-      PROJETO INTEGRADOR DE ENGENHARIA DE SOFTWARE
+      Sistema de RPG Python Baseado em Basic Roleplay
     </text>
     
   </g>
