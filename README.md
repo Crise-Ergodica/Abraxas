@@ -3,160 +3,139 @@
 </div>
 <br>
 
-![Status](https://img.shields.io/badge/Status-Em_Desenvolvimento-yellow)
+![Status](https://img.shields.io/badge/Status-Development-yellow)
 ![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)
 ![Django](https://img.shields.io/badge/Django-5.0-092E20?logo=django&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-336791?logo=postgresql&logoColor=white)
-![JavaScript](https://img.shields.io/badge/Frontend-Vanilla_JS-F7DF1E?logo=javascript&logoColor=black)
-![Poetry](https://img.shields.io/badge/Gerenciador-Poetry-60A5FA?logo=poetry&logoColor=white)
+![BRP](https://img.shields.io/badge/System-Basic_Roleplaying-red)
+![JSON](https://img.shields.io/badge/Architecture-Data_Driven-orange)
+![Poetry](https://img.shields.io/badge/Manager-Poetry-60A5FA?logo=poetry&logoColor=white)
 
-> **Descrição:** Localizada na Praça Guilhermino de Oliveira, N 224 Santa Margarida MG, e tendo seu horário de funcionamento de Segunda a Sábado das 8:00 às 21:00 horas, oferece atendimento e entrega de uma ampla variedade de bebidas de alta qualidade, que abrange desde refrigerantes e sucos, até uma seleção de vinhos, cervejas artesanais, destilados e coquetéis prontos para desfrutar. O atendimento On-line funciona a partir do momento em que o cliente entra em contato pelos canais digitais da loja (Instagram ou WhatsApp) ou por chamada telefônica, e rapidamente a atendente irá separar seu pedido, caso não tenha algum item ela vai sugerir algo semelhante, pegar o endereço de entrega e em caso de pagamento por meio de Pix já receber o pagamento. Assim que o pedido for fechado o motoboy irá levar até a casa do cliente e em caso de pagamentos por meio de dinheiro ou cartão receber o pagamento. Já o atendimento presencial funciona de maneira simples o cliente escolhe entre receber a ajuda da atendente ou ele mesmo pegar o que deseja e se dirigir até o caixa para efetuar o pagamento. 
-
----
-
-## Documentacao do Projeto
-
-Para manter a padronizacao, leia os guias antes de iniciar o desenvolvimento:
-
-- [Contribuição e Git](docs/CONTRIBUTING.md)
-- [Backend (Django)](docs/BACKEND_GUIDE.md)
-- [Frontend (JS)](docs/FRONTEND_GUIDE.md)
-
-*Conforme o desenvolvimento avança, independente de sermos responsaveis ou não pela documentação final, é dever de cada integrante gerar documentos e comits organizados para o entendimento de todos do código em sua frente*
+**Description:** Abraxas é uma plataforma de gerenciamento de jogos de interpretação de papéis (RPG) baseada no sistema Basic Roleplaying (BRP). Distinguindo-se por uma arquitetura Orientada a Dados (*Data-Driven*), o sistema desacopla as regras de negócio do código-fonte. Regras, fórmulas de dano, custos de perícia e especificações de itens são definidos em arquivos JSON externos. Esta arquitetura permite que o sistema calcule atributos derivados, como Pontos de Vida e Bônus de Dano, dinamicamente em tempo de execução. Esta abordagem facilita a implementação de regras customizadas ou a adaptação para cenários distintos (Fantasia, Ficção Científica, Horror) sem a necessidade de refatoração da lógica do Backend.
 
 ---
 
-## 1. Composição do Time e Responsabilidades
+## Project Documentation
 
-A divisão do grupo segue uma arquitetura **Backend (API Provider)** e **Frontend (API Consumer)**.
+Para garantir a padronização e a compreensão da arquitetura do motor, consulte os seguintes guias:
 
-| Integrante | Função Principal | Responsabilidades Chave | Stack Focada |
-| :--- | :--- | :--- | :--- |
-| **Gustavo**, **Gabriel**, **Rafael** | Infra e DBA | Configuração do Docker, CI/CD, Modelagem do Banco (SQL), Migrations. | Docker, PostgreSQL, SQL |
-| **Aurora**, **Kayke** | QA e Docs | Testes Automatizados, Swagger/Redoc, Documentação Acadêmica (LaTeX/ABNT). | Pytest, Swagger, Markdown |
-| **Aurora** | Backend Logic | Desenvolvimento das Views, Regras de Negócio e Segurança. | Django REST Framework (DRF) |
-| **Aurora** | API Integration | Serializers, Endpoints, Autenticação (JWT/Session). | Python, DRF, JSON |
-| **Ana Clara**, **Gabriel** | UI/UX Designer | Estrutura HTML Semântica, CSS (Tailwind/Bootstrap), Acessibilidade. | HTML5, CSS3, Figma |
-| **Ana Clara** | Frontend Dev | Consumo de API (Fetch/Axios), Manipulação de DOM, Lógica JS. | JavaScript (ES6+), AJAX |
+- [Engine Guide](docs/ENGINE_GUIDE.md)
+- [JSON Rules Schema](docs/JSON_SCHEMA.md)
+- [Frontend and API Consumption](docs/FRONTEND_GUIDE.md)
 
 ---
 
-## 2. Arquitetura do Projeto
+## 1. System Architecture
 
-O projeto é um **Monorepo Modular**. O Backend serve apenas JSON; o Frontend consome esses dados e renderiza o HTML.
+O projeto segue o padrão *Interpreter*. Um componente central, designado como "Motor" (`rpg_engine.py`), interpreta definições ("Regras JSON") e aplica um contexto ("Personagem do Banco de Dados") para gerar resultados.
+
+
+
+### Data Flow
+
+1.  **Data Layer (`data/*.json`):** Define a mecânica operacional (ex: fórmulas de cálculo de HP).
+2.  **Engine Layer (`rpg_engine.py`):** Processa fórmulas matemáticas e rolagens de dados.
+3.  **Instance Layer (`game_instance.py`):** Singleton responsável por carregar os arquivos JSON na memória durante a inicialização da aplicação.
+4.  **Model Layer (`models.py`):** O modelo de Personagem persiste apenas atributos base. Atributos derivados são computados via propriedades calculadas instantaneamente pelo Motor.
+
+---
+
+## 2. Directory Structure
+
+O projeto é modular, separando a lógica do framework (Django) da lógica do jogo (Engine).
 
 ```text
 Abraxas/
-├── .github/workflows/    # Automação (CI/CD)
-├── docs/                 # Documentação do TCC (Diagramas, PDFs)
-├── src/                  # CÓDIGO FONTE
-│   ├── config/           # Configurações do Django (settings, urls base)
-│   ├── apps/             # Aplicações Django (Onde vive a API)
-│   │   ├── core/         # Models e Utils
-│   │   └── api/          # Serializers e Views (DRF)
-│   ├── static/           # ASSETS FRONTEND
-│   │   ├── css/          # Estilos
-│   │   └── js/           # Lógica do Cliente
-│   │       ├── services/ # Abstração das chamadas API (fetch)
-│   │       └── pages/    # Scripts específicos de cada tela
-│   └── templates/        # HTML Puro (Esqueleto da página)
-├── tests/                # Testes Automatizados
-├── docker-compose.yml    # Orquestração de Containers (Banco + App)
-├── pyproject.toml        # Dependências (Poetry)
-└── README.md             # Você está aqui
+├── src/
+│   ├── config/             # Configurações Django (settings, urls)
+│   ├── apps/
+│   │   ├── core/           # NÚCLEO DO SISTEMA
+│   │   │   ├── data/       # Regras Externas JSON e Itens
+│   │   │   │   ├── core_rules.json
+│   │   │   │   ├── skills.json
+│   │   │   │   ├── weapons.json
+│   │   │   │   └── armor.json
+│   │   │   ├── rpg_engine.py    # Lógica Matemática
+│   │   │   ├── game_instance.py # Carregador Singleton
+│   │   │   ├── models.py        # Modelos (Character, Campaign)
+│   │   │   └── views.py         # Endpoints da API
+│   │   └── api/            # Serializers (DRF)
+│   └── templates/          # Frontend (HTML/HTMX)
+├── tests/                  # Testes Unitários do Motor
+├── manage.py
+├── pyproject.toml          # Dependências (Poetry)
+└── README.md
 ```
 
 ---
 
-## 3. Como Rodar o Projeto (Setup)
+## 3. Setup and Execution
 
-### Passo a Passo
+### Prerequisites
+- Python 3.11 ou superior
+- Poetry
 
-1. **Instale as dependências:**
-    Isso criará automaticamente a pasta `.venv` na raiz.
+### Step-by-Step
 
+1.  **Instalar dependências:**
     ```bash
     poetry install
     ```
 
-2. **Ative o Ambiente Virtual:**
-
-    **Windows:**
-
+2.  **Ativar Ambiente Virtual:**
     ```bash
+    # Windows
     .venv\Scripts\activate
-    ```
-
-     **Linux / Mac:**
-
-    ```bash
+    # Linux/Mac
     source .venv/bin/activate
     ```
 
-3. **Variáveis de Ambiente:**
+3.  **Verificar Arquivos de Regra:**
+    Certifique-se de que o diretório `src/apps/core/data/` contém os arquivos `core_rules.json` e `skills.json`. O sistema não inicializará sem estes arquivos.
 
-    ```bash
-    cp .env.example .env
-    ```
-
-4. **Suba o Banco de Dados (Docker):**
-
-    ```bash
-    docker-compose up -d
-    ```
-
-5. **Execute o Projeto:**
-
-    Com a venv ativa, use os comandos normais do Django:
-
+4.  **Executar Servidor:**
     ```bash
     python manage.py migrate
     python manage.py runserver
     ```
-
-    > O servidor estará rodando em: `http://127.0.0.1:8000/`
-
----
-
-## 4. Workflow de Desenvolvimento (Git Flow)
-
-Para evitar conflitos, seguimos estritamente este fluxo. **NUNCA faça commit direto na main ou develop.**
-
-### As Branches
-
-- **main**: Código de produção (estável). Apenas Tech Lead aprova o merge.
-- **develop**: Branch de integração. Todo PR deve apontar para cá.
-- **feature/nome-da-feature**: Branch de trabalho individual.
-
-### Ciclo de Vida de uma Tarefa
-
-1. **Crie sua branch:**
-
-    ```bash
-    git checkout develop
-    git pull origin develop
-    git checkout -b feature/minha-nova-funcionalidade
-    ```
-
-2. **Trabalhe e Commite:**
-
-    - Use [Conventional Commits](https://www.conventionalcommits.org/):
-        - `feat: adiciona model de alunos`
-        - `fix: corrige erro no login`
-        - `docs: atualiza diagrama de classes`
-
-    - **Abra um Pull Request (PR):**
-        - No GitHub, solicite o merge da sua `feature` para a `develop`.
-        - Solicite revisão de pelo menos 1 colega.
+    O carregador do Motor exibirá logs no terminal indicando a quantidade de regras e perícias carregadas.
 
 ---
 
-## 5. Documentação da API
+## 4. Development Workflow
 
-A documentação dos endpoints é gerada automaticamente pelo Swagger.
-Após rodar o servidor, acesse:
+O fluxo de trabalho foca na integridade das regras:
+
+1.  **Rule Modification:** Para modificar o dano de armas ou cálculos de HP, edite os arquivos **JSON** em `apps/core/data/`. A modificação do código Python não é necessária para alterações de regras.
+2.  **Logic Modification:** Para implementar novas funções matemáticas ou novas mecânicas centrais, edite o `rpg_engine.py`.
+
+### Git Flow
+- **main:** Versão de produção estável.
+- **develop:** Branch de integração.
+- **feature/mechanic-name:** Branches de trabalho.
+
+---
+
+## 5. API Documentation (Swagger)
+
+A API REST expõe os dados calculados dos personagens.
+Após iniciar o servidor, acesse:
 
 - **Swagger UI:** `http://localhost:8000/api/schema/swagger-ui/`
 - **ReDoc:** `http://localhost:8000/api/schema/redoc/`
-# Abraxas
-# Abraxas
+
+---
+
+### Usage Example (Django Shell)
+
+```python
+from apps.core.models import Character
+
+# O sistema calcula atributos derivados automaticamente:
+conan = Character.objects.create(name="Conan", strength=18, size=16)
+
+print(f"Max HP: {conan.hit_points_max}")  # Calculado via JSON
+print(f"Damage Bonus: {conan.damage_bonus}") # Calculado via JSON
+
+conan.equip_weapon('weapon_battle_axe')
+print(f"Attack Damage: {conan.get_attack_damage_formula()}") # Exemplo de saída: "1d8+1+1d6"
+```
