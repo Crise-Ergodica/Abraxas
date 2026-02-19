@@ -44,26 +44,31 @@ O projeto segue o padrão *Interpreter*. Um componente central, designado como "
 O projeto é modular, separando a lógica do framework (Django) da lógica do jogo (Engine).
 
 ```text
-Abraxas/
-├── src/
-│   ├── config/             # Configurações Django (settings, urls)
-│   ├── apps/
-│   │   ├── core/           # NÚCLEO DO SISTEMA
-│   │   │   ├── data/       # Regras Externas JSON e Itens
-│   │   │   │   ├── core_rules.json
-│   │   │   │   ├── skills.json
-│   │   │   │   ├── weapons.json
-│   │   │   │   └── armor.json
-│   │   │   ├── rpg_engine.py    # Lógica Matemática
-│   │   │   ├── game_instance.py # Carregador Singleton
-│   │   │   ├── models.py        # Modelos (Character, Campaign)
-│   │   │   └── views.py         # Endpoints da API
-│   │   └── api/            # Serializers (DRF)
-│   └── templates/          # Frontend (HTML/HTMX)
-├── tests/                  # Testes Unitários do Motor
-├── manage.py
-├── pyproject.toml          # Dependências (Poetry)
-└── README.md
+abraxas/
+├── abraxas.spec             # Configurações de compilação do PyInstaller
+├── requirements.txt         # Bibliotecas necessárias (textual, etc.)
+├── README.md                # A vitrine do portfólio (explicação da obra e do código)
+├── run.py                   # O ponto de ignição do executável
+└── src/
+    ├── __init__.py
+    ├── database/
+    │   ├── __init__.py
+    │   ├── connection.py    # Gerencia a conexão com o SQLite
+    │   └── queries.py       # Funções que buscam e salvam o estado do leitor/jogador
+    ├── mechanics/           # O motor invisível do sistema
+    │   ├── __init__.py
+    │   ├── engine.py        # Lógica oculta, testes, cálculos e caminhos do labirinto
+    │   └── state.py         # Gerencia em qual ponto da travessia o usuário está
+    ├── tui/                 # A casca interativa (Textual)
+    │   ├── __init__.py
+    │   ├── app.py           # Classe principal (herda de textual.app.App)
+    │   ├── screens/         # Telas distintas (Ex: Menu, Ficha, Narrativa)
+    │   ├── widgets/         # Seus componentes customizados
+    │   └── styles/
+    │       └── abraxas.tcss # O arquivo de design CSS do Textual
+    └── assets/              # Arquivos estáticos empacotados pelo PyInstaller
+        ├── init_db.sqlite   # Banco de dados inicial embutido (se necessário)
+        └── ascii_art.txt    # Elementos visuais em texto
 ```
 
 ---
