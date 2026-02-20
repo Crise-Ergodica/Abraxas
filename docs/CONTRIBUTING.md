@@ -4,10 +4,6 @@
 
 </div>
 
-<br>
-
-# Guia de Contribuição e Diretrizes
-
 Agradecemos o seu interesse em contribuir com o **Abraxas**. Este documento estabelece os padrões arquiteturais, as diretrizes legais para a modificação do motor e como você pode ajudar a expandir o universo e as regras do sistema.
 
 ---
