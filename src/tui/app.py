@@ -146,24 +146,19 @@ class AbraxasTUI(App):
         log = self.query_one("#log_panel", Label)
 
         if event.button.id == "roll_dodge":
-            # 1. Feedback visual imediato antes da rolagem
+            # 1. Feedback visual imediato
             log.update("> [Aguarde] Calculando chance e rolando D100...")
 
-            # 2. Pausa dramática assíncrona (mantém a UI responsiva)
+            # 2. Pausa dramática assíncrona (suspense)
             await asyncio.sleep(0.8)
 
-            # 3. Execução matemática via Engine
+            # 3. Execução matemática (A gravação no banco acontece aqui dentro, escondida!)
             # result_level, roll = self.skill_engine.roll_skill(self.char_id, "SKL_DODGE")
 
-            # 4. Auditoria de Dados: Persiste o resultado da rolagem no log do SQLite
-            # self.skill_engine.log_roll_audit(self.char_id, "SKL_DODGE", roll, result_level.name)
-
-            # Mock temporário:
+            # Mock temporário enquanto não conectamos de verdade:
             roll = 42
             result_level = "SUCCESS"
-            log.update(
-                f"> Rolagem de Dodge: {roll} [{result_level}]\n> [Log de Auditoria gravado com sucesso]"
-            )
+            log.update(f"> Rolagem de Dodge: {roll} [{result_level}]")
 
         elif event.button.id == "take_damage":
             log.update("> [Alerta] O inimigo desferiu um golpe...")
