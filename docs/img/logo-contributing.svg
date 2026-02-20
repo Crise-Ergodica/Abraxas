@@ -11,7 +11,7 @@
       </feMerge>
     </filter>
 
-    <path id="wavePath" d="M 50,100 Q 200,50 400,100 T 750,100" fill="none" />
+    <path id="wavePath" d="M 50,140 Q 400,0 750,140" fill="none" />
   </defs>
 
   <style>
