@@ -1,6 +1,6 @@
 <div align="center">
   
-  <img src="img/logo-contributing.svg" alt="Contributing Abraxas Logo" width="100%">
+  <img src="docs/img/logo-contributing.svg" alt="Contributing Abraxas Logo" width="100%">
 
 </div>
 
