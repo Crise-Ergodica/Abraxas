@@ -1,85 +1,61 @@
-# Guia de Contribuicao e Workflow
+<div align="center">
+  
+  <img src="img/logo-contributing.svg" alt="Contributing Abraxas Logo" width="100%">
 
-> "Codigo limpo e codigo que foi revisado."
+</div>
 
-## 1. Termo de Responsabilidade e Escopo de Atuação
+<br>
 
-Para que o projeto flua sem gargalos, cada membro deve focar em dominar sua area de atuacao. Este termo garante que nao havera sobreposicao de tarefas nao planejadas e que cada integrante sabe exatamente o que precisa estudar e entregar.
+# Guia de Contribuição e Diretrizes
 
-### Infraestrutura e DBA (Gustavo, Gabriel e Rafael)
-* **O que fazem:** Sao os guardioes dos dados. Responsaveis pela modelagem do banco relacional, orquestracao com Docker e criacao das classes no `models.py` do Django. 
-* **O que devem dominar:** SQL, relacionamento de tabelas (PK/FK), funcionamento das migracoes do Django (`makemigrations` e `migrate`) e comandos basicos de Docker Compose.
-
-### Backend Logic e API (Aurora)
-* **O que faz:** E a ponte entre os dados e a interface. Responsavel pela logica de negocio, seguranca e por expor os dados criados pela Infra atraves de JSON (`views.py`, `serializers.py` e `urls.py`).
-* **O que deve dominar:** Django REST Framework (DRF), verbos HTTP (GET, POST, PUT, DELETE), status codes e autenticacao de API.
-
-### QA e Documentacao (Aurora e Kayke)
-* **O que faz:** Garante que o software funcione como o esperado e que as decisoes da equipe estejam registradas. Cuida da documentacao automatica da API e da redacao tecnica.
-* **O que deve dominar:** Testes automatizados (Pytest), padroes de documentacao (Swagger/Redoc) e formatacao de manuais (Markdown/LaTeX).
-
-### Frontend: UI/UX e Integracao (Ana Clara e Gabriel)
-* **O que fazem:** Constroem a interface visual e dao vida ao sistema conectando o HTML com a API do Backend.
-* **O que devem dominar:** Estruturacao semantica (HTML5), estilizacao (CSS puro ou framework), manipulacao do DOM via JavaScript e assincronismo (`fetch`, `async/await`, `Promises`).
-
-### Regra de Alteracao de Stack Tecnologica
-A autonomia das frentes de trabalho e encorajada. Porem, se qualquer subgrupo decidir alterar a tecnologia de sua responsabilidade em comum acordo (exemplo: trocar Vanilla JS por Alpine.js, ou alterar o banco de dados), a seguinte regra se aplica:
-1. A equipe de **QA e Documentacao** deve ser notificada imediatamente para que testes e documentacoes academicas sejam realinhados.
-2. O restante do grupo deve ser avisado sobre o impacto.
-3. Este documento (`CONTRIBUTING.md`) e o `README.md` principal **devem obrigatoriamente** ser atualizados refletindo a nova Stack no mesmo Pull Request que introduzir a mudanca.
+Agradecemos o seu interesse em contribuir com o **Abraxas**. Este documento estabelece os padrões arquiteturais, as diretrizes legais para a modificação do motor e como você pode ajudar a expandir o universo e as regras do sistema.
 
 ---
 
-## 2. O Git Flow do Grupo
+## 1. Licenciamento e Criação de Homebrew
 
-Nao invente moda. Siga estritamente este fluxo para evitar conflitos de merge.
+O código-fonte do motor Abraxas é distribuído sob a **Licença MIT**. Isso garante liberdade máxima para a comunidade. 
 
-### As Branches Sagradas
+Você tem permissão total para utilizar, copiar, modificar, distribuir e até comercializar suas próprias campanhas usando o nosso motor, sob a única condição de que o aviso de copyright original da Licença MIT seja incluído.
 
-* `main`: **INTOCAVEL**. E o codigo que funciona. So recebe merge via Pull Request aprovado.
-* `develop`: A branch onde integramos as funcionalidades. Todos os PRs devem apontar para ca.
-
-### Nomenclatura de Branches
-
-Quando criar uma funcionabilidade, sempre crie branches a partir da `develop`. 
-
-Use o padrao:
-`tipo/nome-da-tarefa`
-
-* `feat/login-usuario` (Nova funcionalidade)
-* `fix/botao-quebrado` (Correcao de erro)
-* `docs/atualiza-readme` (Documentacao)
-* `refactor/limpeza-css` (Melhoria de codigo sem mudar funcionalidade)
-
-Se todo o grupo focar em fazer **tarefas pequenas**, em **branches pequenas**, mandando para a `develop` o mais rápido possível, o projeto fluirá de forma extremamente profissional.
+### Modificações Data-Driven (Conteúdo Customizado)
+Devido à natureza *Data-Driven* do Abraxas, **não é necessário alterar o código Python para criar regras customizadas ou *Homebrews***. 
+* Novas fórmulas de dano, custos de sanidade, itens, perícias e cálculos de atributos derivados devem ser adicionados ou modificados exclusivamente através dos arquivos **JSON** na camada de Dados (`src/database/` ou diretório correspondente).
+* Modificações nas engrenagens matemáticas (como alterar a forma como os dados explodem ou como a rolagem base funciona) devem ser direcionadas ao núcleo do motor (`src/mechanics/engine.py`).
 
 ---
 
-## 3. Mensagens de Commit (Conventional Commits)
+## 2. Padrões de Arquitetura e Escopo
 
-Escreva commits que contem uma historia. O padrao e:
-`tipo: descricao curta no imperativo`
+Se você deseja contribuir diretamente com o código base do projeto, respeite os seguintes domínios de responsabilidade:
 
-**Exemplos Aceitos:**
-
-* `feat: adiciona model de Produto`
-* `fix: corrige erro de CORS na API`
-* `style: ajusta indentacao no navbar`
-
-**Exemplos PROIBIDOS:**
-
-* `consertando`
-* `finalizando`
-* `testando`
+* **Infraestrutura:** Gerenciamento do banco de dados SQLite embarcado e orquestração do ambiente de compilação (Poetry e PyInstaller).
+* **Motor Lógico (Engine):** Lógica matemática de processamento de regras, gerenciamento de estado e carregamento dos arquivos JSON.
+* **TUI (Interface de Terminal):** Componentização visual utilizando o framework Textual. Toda a renderização interativa e estilização TCSS pertencem a esta camada.
 
 ---
 
-## 4. O Ritual do Pull Request (PR)
+## 3. Ajude na Documentação (A Wiki do Abraxas)
 
-Antes de abrir um PR no GitHub:
+Como o Abraxas também é uma obra de literatura ergódica, a documentação é tão importante quanto o código. Nós encorajamos fortemente que a comunidade nos ajude a expandir, corrigir e traduzir os guias do sistema.
 
-1. Garanta que seu codigo esta rodando localmente sem erros.
-2. Atualize sua branch com a `develop` (`git pull origin develop`) para resolver conflitos na sua maquina, nao no GitHub.
-3. Preencha a descricao do PR explicando **O QUE** foi feito e **COMO** testar.
+Se você gosta de escrever, revisar regras de RPG ou documentar arquitetura de software, sua contribuição é essencial na nossa Wiki oficial:
 
-**Regra de Ouro:** Nenhum PR e aprovado sem pelo menos 1 Review de outro colega do grupo.
+**[Acesse e contribua com a Wiki do Abraxas](https://github.com/Crise-Ergodica/Abraxas/wiki/Wiki-Abraxas)**
+
+Você pode contribuir documentando:
+* Tutoriais de como escrever um arquivo JSON válido para criar uma nova arma.
+* Guias de uso da interface TUI.
+* Explicações detalhadas sobre as fórmulas matemáticas do motor.
+
+---
+
+## 4. Padrões de Commits e Pull Requests
+
+Quando for enviar código ou alterações nos arquivos JSON base, adotamos um processo simplificado, focado em clareza:
+
+1. Faça um *Fork* deste repositório e crie uma *branch* para a sua alteração.
+2. Certifique-se de que o projeto executa perfeitamente em ambiente local utilizando `poetry run python run.py`.
+3. Utilize o padrão **Conventional Commits** para o seu histórico. O formato obrigatório é `tipo: descrição objetiva`.
+   * **Exemplos permitidos:** `feat: adiciona barra de vida na TUI`, `fix: corrige falha no cálculo de armadura pesada`, `docs: atualiza guia de criação de itens na wiki`.
+4. Abra um *Pull Request* (PR) contendo uma descrição clara do que foi resolvido e como a equipe deve testar a sua nova implementação.
