@@ -12,13 +12,13 @@ Agradecemos o seu interesse em contribuir com o **Abraxas**. Este documento esta
 
 ## 1. Licenciamento e Criação de Homebrew
 
-O código-fonte do motor Abraxas é distribuído sob a **Licença MIT**. Isso garante liberdade máxima para a comunidade. 
+O código-fonte do motor Abraxas é distribuído sob a **Licença MIT**. Isso garante liberdade máxima para a comunidade.
 
 Você tem permissão total para utilizar, copiar, modificar, distribuir e até comercializar suas próprias campanhas usando o nosso motor, sob a única condição de que o aviso de copyright original da Licença MIT seja incluído.
 
 ### Modificações Data-Driven (Conteúdo Customizado)
 
-Devido à natureza *Data-Driven* do Abraxas, **não é necessário alterar o código Python para criar regras customizadas ou *Homebrews***. 
+Devido à natureza *Data-Driven* do Abraxas, **não é necessário alterar o código Python para criar regras customizadas ou *Homebrews***.
 
 * Novas fórmulas de dano, custos de sanidade, itens, perícias e cálculos de atributos derivados devem ser adicionados ou modificados exclusivamente através dos arquivos **JSON** na camada de Dados (`src/database/` ou diretório correspondente).
 * Modificações nas engrenagens matemáticas (como alterar a forma como os dados explodem ou como a rolagem base funciona) devem ser direcionadas ao núcleo do motor (`src/mechanics/engine.py`).
