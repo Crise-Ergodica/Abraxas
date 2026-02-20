@@ -120,12 +120,24 @@ class SkillEngine:
             raise ValueError(f"Perícia '{skill_id}' não configurada no banco.")
 
         chars = self._get_characteristics(char_id)
-
         # Avalia se a base é fixa (ex: '25') ou dependente de status (ex: 'DEX * 2')
         base_val = int(eval(row["base_formula"], {}, chars))
-
         return base_val + row["allocated_points"]
 
+    def _log_roll_audit(self, char_id: str, action_name: str, die_result: int, success_level: str) -> None:
+        """
+        Método privado. Persiste o resultado da rolagem no banco de dados.
+        A TUI não faz ideia de que isso está acontecendo.
+        """
+        with self.connection:
+            self.connection.execute(
+                """
+                INSERT INTO roll_history (char_id, action_name, die_result, success_level)
+                VALUES (?, ?, ?, ?)
+                """,
+                (char_id, action_name, die_result, success_level)
+            )
+    
     def roll_skill(self, char_id: str, skill_id: str) -> Tuple[SuccessLevel, int]:
         """
         Gera a rolagem estocástica (1d100) e a valida contra o rating total da perícia.
@@ -144,17 +156,19 @@ class SkillEngine:
         """
         total_skill = self.get_skill_total(char_id, skill_id)
         roll = random.randint(1, 100)
-
-        # Regra do BRP: Sucesso Especial é 1/5 do total, arredondado para cima.
+        
         special_chance = math.ceil(total_skill / 5.0)
-
+        
         if roll <= special_chance:
             result = SuccessLevel.SPECIAL_SUCCESS
         elif roll <= total_skill:
             result = SuccessLevel.SUCCESS
         else:
             result = SuccessLevel.FAILURE
-
+            
+        # A MÁGICA AQUI: O motor grava no banco sozinho antes de devolver a resposta!
+        self._log_roll_audit(char_id, skill_id, roll, result.name)
+            
         return result, roll
 
 
