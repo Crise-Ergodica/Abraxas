@@ -1,7 +1,15 @@
-<div align="center">
-  <img src="docs/img/logo-readme.svg" alt="Abraxas Logo" width="100%">
-</div>
+````text
+                       ░███    ░████████   ░█████████     ░███    ░██    ░██    ░███      ░██████   
+                      ░██░██   ░██    ░██  ░██     ░██   ░██░██    ░██  ░██    ░██░██    ░██   ░██  
+                     ░██  ░██  ░██    ░██  ░██     ░██  ░██  ░██    ░██░██    ░██  ░██  ░██         
+                    ░█████████ ░████████   ░█████████  ░█████████    ░███    ░█████████  ░████████  
+                    ░██    ░██ ░██     ░██ ░██   ░██   ░██    ░██   ░██░██   ░██    ░██         ░██ 
+                    ░██    ░██ ░██     ░██ ░██    ░██  ░██    ░██  ░██  ░██  ░██    ░██  ░██   ░██  
+                    ░██    ░██ ░█████████  ░██     ░██ ░██    ░██ ░██    ░██ ░██    ░██   ░██████   
+````                                                                        
 <br>
+
+<div align=center>
 
 ![Status](https://img.shields.io/badge/Status-Development-yellow)
 ![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)
@@ -9,6 +17,8 @@
 ![BRP](https://img.shields.io/badge/System-Basic_Roleplaying-red)
 ![JSON](https://img.shields.io/badge/Architecture-Data_Driven-orange)
 ![Poetry](https://img.shields.io/badge/Manager-Poetry-60A5FA?logo=poetry&logoColor=white)
+
+</div>
 
 **Description:** Abraxas é uma plataforma de gerenciamento de jogos de interpretação de papéis (RPG) baseada no sistema Basic Roleplaying (BRP). Distinguindo-se por uma arquitetura Orientada a Dados (*Data-Driven*), o sistema desacopla as regras de negócio do código-fonte. Regras, fórmulas de dano, custos de perícia e especificações de itens são definidos em arquivos JSON externos. Esta arquitetura permite que o sistema calcule atributos derivados, como Pontos de Vida e Bônus de Dano, dinamicamente em tempo de execução. Esta abordagem facilita a implementação de regras customizadas ou a adaptação para cenários distintos (Fantasia, Ficção Científica, Horror) sem a necessidade de refatoração da lógica do Backend.
 
