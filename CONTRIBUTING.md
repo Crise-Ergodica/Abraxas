@@ -17,7 +17,9 @@ O código-fonte do motor Abraxas é distribuído sob a **Licença MIT**. Isso ga
 Você tem permissão total para utilizar, copiar, modificar, distribuir e até comercializar suas próprias campanhas usando o nosso motor, sob a única condição de que o aviso de copyright original da Licença MIT seja incluído.
 
 ### Modificações Data-Driven (Conteúdo Customizado)
+
 Devido à natureza *Data-Driven* do Abraxas, **não é necessário alterar o código Python para criar regras customizadas ou *Homebrews***. 
+
 * Novas fórmulas de dano, custos de sanidade, itens, perícias e cálculos de atributos derivados devem ser adicionados ou modificados exclusivamente através dos arquivos **JSON** na camada de Dados (`src/database/` ou diretório correspondente).
 * Modificações nas engrenagens matemáticas (como alterar a forma como os dados explodem ou como a rolagem base funciona) devem ser direcionadas ao núcleo do motor (`src/mechanics/engine.py`).
 
@@ -42,6 +44,7 @@ Se você gosta de escrever, revisar regras de RPG ou documentar arquitetura de s
 **[Acesse e contribua com a Wiki do Abraxas](https://github.com/Crise-Ergodica/Abraxas/wiki/Wiki-Abraxas)**
 
 Você pode contribuir documentando:
+
 * Tutoriais de como escrever um arquivo JSON válido para criar uma nova arma.
 * Guias de uso da interface TUI.
 * Explicações detalhadas sobre as fórmulas matemáticas do motor.

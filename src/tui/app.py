@@ -36,16 +36,16 @@ from textual.reactive import reactive
 class CharacterStatsWidget(Static):
     """
     Widget reativo responsável por exibir o estado vital do personagem.
-    
-    Qualquer alteração nas variáveis `hp` ou `mp` disparará automaticamente 
-    um evento de re-renderização nativo do Textual, garantindo que a tela 
+
+    Qualquer alteração nas variáveis `hp` ou `mp` disparará automaticamente
+    um evento de re-renderização nativo do Textual, garantindo que a tela
     sempre reflita o estado atual da memória.
 
     Attributes:
         hp (int): Pontos de vida atuais do personagem (Hit Points).
         mp (int): Pontos de magia atuais do personagem (Magic Points).
     """
-    
+
     hp = reactive(0)
     mp = reactive(0)
 
@@ -71,7 +71,7 @@ class AbraxasTUI(App):
         CSS (str): Regras de estilização (TCSS) embutidas para o layout.
         BINDINGS (list): Mapeamento de atalhos de teclado globais da aplicação.
     """
-    
+
     CSS = """
     Screen { align: center middle; }
     CharacterStatsWidget { padding: 1; background: $boost; text-align: center; }
@@ -119,15 +119,15 @@ class AbraxasTUI(App):
     def update_stats_from_db(self) -> None:
         """
         Sincroniza a View com a camada de persistência.
-        Consulta o banco de dados via Motor Lógico e injeta os valores reais 
+        Consulta o banco de dados via Motor Lógico e injeta os valores reais
         nos widgets reativos, forçando a atualização visual.
         """
         # Exemplo da chamada arquitetural real:
         # state = self.brp_engine.get_current_state(self.char_id)
-        
+
         # Mock simulando o retorno do SQLite:
-        mock_state = {"current_hp": 13, "current_mp": 14} 
-        
+        mock_state = {"current_hp": 13, "current_mp": 14}
+
         stats_widget = self.query_one("#stats", CharacterStatsWidget)
         stats_widget.hp = mock_state["current_hp"]
         stats_widget.mp = mock_state["current_mp"]
@@ -136,8 +136,8 @@ class AbraxasTUI(App):
         """
         Manipulador de eventos assíncrono para interações de clique.
 
-        Libera a Main Thread durante pausas estéticas (await asyncio.sleep) 
-        para construir suspense mecânico antes de delegar as rolagens e 
+        Libera a Main Thread durante pausas estéticas (await asyncio.sleep)
+        para construir suspense mecânico antes de delegar as rolagens e
         gravações ao Motor de Regras.
 
         Args:
@@ -148,32 +148,37 @@ class AbraxasTUI(App):
         if event.button.id == "roll_dodge":
             # 1. Feedback visual imediato antes da rolagem
             log.update("> [Aguarde] Calculando chance e rolando D100...")
-            
+
             # 2. Pausa dramática assíncrona (mantém a UI responsiva)
             await asyncio.sleep(0.8)
-            
+
             # 3. Execução matemática via Engine
             # result_level, roll = self.skill_engine.roll_skill(self.char_id, "SKL_DODGE")
-            
+
             # 4. Auditoria de Dados: Persiste o resultado da rolagem no log do SQLite
             # self.skill_engine.log_roll_audit(self.char_id, "SKL_DODGE", roll, result_level.name)
-            
+
             # Mock temporário:
             roll = 42
-            result_level = "SUCCESS" 
-            log.update(f"> Rolagem de Dodge: {roll} [{result_level}]\n> [Log de Auditoria gravado com sucesso]")
+            result_level = "SUCCESS"
+            log.update(
+                f"> Rolagem de Dodge: {roll} [{result_level}]\n> [Log de Auditoria gravado com sucesso]"
+            )
 
         elif event.button.id == "take_damage":
             log.update("> [Alerta] O inimigo desferiu um golpe...")
             await asyncio.sleep(1.0)
-            
+
             # Delegação do dano após a mitigação da armadura (Engine de Combate)
             damage_taken = 3
             # self.combat_engine.apply_damage(self.char_id, damage_taken)
-            log.update(f"> O personagem sofreu {damage_taken} de dano físico após mitigação.")
-            
+            log.update(
+                f"> O personagem sofreu {damage_taken} de dano físico após mitigação."
+            )
+
             # Sincroniza a UI com a nova verdade absoluta do banco
             self.update_stats_from_db()
+
 
 # if __name__ == "__main__":
 #     app = AbraxasTUI(char_id="001")
