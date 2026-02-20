@@ -1,0 +1,14 @@
+<svg viewBox="0 0 800 180" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="strong-rainbow-rev" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00FFFF" />   <stop offset="17%" stop-color="#0000FF" />  <stop offset="33%" stop-color="#FF00FF" />  <stop offset="50%" stop-color="#FF0000" />  <stop offset="67%" stop-color="#FFFF00" />  <stop offset="83%" stop-color="#00FF00" />  <stop offset="100%" stop-color="#00FFFF" /> </linearGradient>
+
+    <filter id="neon-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <path id="wavePath" d="M 50,1
